@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="StatsView">
         <attr name="textSize" format="dimension|reference" />
@@ -7,8 +6,11 @@
         <attr name="color2" format="color|reference" />
         <attr name="color3" format="color|reference" />
         <attr name="color4" format="color|reference" />
-        <attr name="unfilledColor" format="color"/>
+        <attr name="unfilledColor" format="color" />
 
+        <attr name="fillType" format="enum">
+            <enum name="parallel" value="0" />
+            <enum name="sequential" value="1" />
+        </attr>
     </declare-styleable>
-
 </resources>
