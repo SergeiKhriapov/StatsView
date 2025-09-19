@@ -39,7 +39,7 @@ class StatsView @JvmOverloads constructor(
         textAlign = Paint.Align.CENTER
     }
 
-    var progress: Float = 0f // 0..360
+    var progress: Float = 360f // 0..360
         set(value) {
             field = value
             invalidate()
@@ -68,7 +68,12 @@ class StatsView @JvmOverloads constructor(
         }
     }
 
-    var data: List<Float> = emptyList()
+    var data: List<Float> = listOf(
+        1F,
+        1F,
+        1F,
+        1F
+    )
         set(value) {
             field = value
             invalidate()

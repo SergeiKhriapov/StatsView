@@ -6,27 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/label"
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonGo"
+        android:text="Go"
+        android:layout_gravity="bottom|center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:text="Заголовок"
-        android:textSize="18sp" />
-
-    <ru.netology.startsview.ui.theme.StatsView
-        android:id="@+id/statsView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        app:color1="#FFFF00"
-        app:color2="#CCCC00"
-        app:color3="#90EE90"
-        app:color4="#006400"
-        app:lineWidth="16dp"
-        app:textSize="20sp"
-
-        app:fillType="sequential"
-        />
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>
