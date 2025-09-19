@@ -1,5 +1,6 @@
 package ru.netology.startsview.ui.theme
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -7,6 +8,7 @@ import android.graphics.PointF
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.LinearInterpolator
 import androidx.core.content.withStyledAttributes
 import ru.netology.startsview.R
 import ru.netology.startsview.utils.AndroidUtils
@@ -39,7 +41,9 @@ class StatsView @JvmOverloads constructor(
         textAlign = Paint.Align.CENTER
     }
 
-    var progress: Float = 0f // 0..360
+    private var animator: ValueAnimator? = null
+
+    var progress: Float = 360f
         set(value) {
             field = value
             invalidate()
@@ -68,10 +72,15 @@ class StatsView @JvmOverloads constructor(
         }
     }
 
-    var data: List<Float> = emptyList()
+    var data: List<Float> = listOf(
+        1F,
+        1F,
+        1F,
+        1F
+    )
         set(value) {
             field = value
-            invalidate()
+            startAnimation()
         }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -131,6 +140,19 @@ class StatsView @JvmOverloads constructor(
             startAngle += anglePerPart
             remainingProgress -= sweepAngle
             if (remainingProgress <= 0f) break
+        }
+    }
+
+    private fun startAnimation() {
+        animator?.cancel()
+        progress = 0f
+        animator = ValueAnimator.ofFloat(0f, 360f).apply {
+            duration = 10000
+            interpolator = LinearInterpolator()
+            addUpdateListener { animation ->
+                progress = animation.animatedValue as Float
+            }
+            start()
         }
     }
 
